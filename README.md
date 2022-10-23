@@ -1,5 +1,5 @@
 # Choralcreator
-My attempt at a choral generator using functional harmony as used by Johann Sebastian Bach.
+My attempt at a choral generator using rules from functional harmony as used by Johann Sebastian Bach.
 
 This project has two goals: 
 
