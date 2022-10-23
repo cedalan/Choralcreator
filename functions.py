@@ -118,7 +118,7 @@ def check_consecutives(chord_voicing1, chord_voicing2):
                 
     return consecutives
 
-def check_voicing_distance(voicing):
+def check_voicing_distance(voicing):#DONE
     """
     Parameters:
     -----------
@@ -137,12 +137,12 @@ def check_voicing_distance(voicing):
             if np.abs(voicing[i] - voicing[i+1]) > 12: #Octave between Soprano and Alto, and Alto and Tenor
                 reasonable_distance = False
         else:
-            if np.abs(voicing[i] - voicing[i+1]) > 19:#Octave + fifth between Tenor and Bas
+            if np.abs(voicing[i] - voicing[i+1]) > 19:#Octave + fifth between Tenor and Bass
                 reasonable_distance = False
 
     return reasonable_distance
 
-def check_voice_leaping(chord_voicing1, chord_voicing2):
+def check_voice_leaping(chord_voicing1, chord_voicing2):#DONE
     """
     You generally want to voice leaps to be small and simple to promote ease of singing. This function checks if the leaps
     between two chords are allowed. 
@@ -162,6 +162,7 @@ def check_voice_leaping(chord_voicing1, chord_voicing2):
 
     max_leap_SAT = 7
 
+    unreasonable_leaps_B = [6, 10, 11]
     max_leap_B = 12
 
     voice_number = 0
@@ -176,12 +177,13 @@ def check_voice_leaping(chord_voicing1, chord_voicing2):
             voice_number += 1
         
         else: #Bass voicing check
-            if np.abs(v1 - v2) > max_leap_B or np.abs(v1 - v2) == 6:
+            if np.abs(v1 - v2) > max_leap_B or int(np.abs(v1 - v2)) in unreasonable_leaps_B:
                 reasonable_leaps = False
 
     return resonable_leaps
 
-def check_voice_landslide(chord_voicing1, chord_voicing2):
+def check_voice_landslide(chord_voicing1, chord_voicing2):#DONE
+
     """
     Checks if all voices move in the same direction. This works by comparing each voice pair, and giving them a value
     based on if they move up or down. If a voice moves up it gains the value 1, if it moves down it gains the value 0, this means
@@ -211,3 +213,62 @@ def check_voice_landslide(chord_voicing1, chord_voicing2):
         voice_landslide = True
 
     return voice_landslide 
+
+def check_prepared_seventh(chord_voicing1, chord_voicing2):
+    """
+    Checks if the seventh of chord 2 (chord_voicing2) is prepared. 
+
+    Parameters:
+    -----------
+    parameters:
+    parameter explanation.
+
+    Returns:
+    --------
+    return_parameter - return_parameter explanation.
+    """
+
+    prepared_seventh = True 
+
+    return prepared_seventh
+
+def check_seventh_resolved(chord_voicing1, chord_voicing2):
+    """
+    Checks if the seventh of chord_voicing1 is resolved properly, that is resolved downwards.
+
+    Parameters:
+    -----------
+    parameters:
+    parameter explanation.
+
+    Returns:
+    --------
+    return_parameter - return_parameter explanation.
+    """
+
+    properly_resolved = True 
+
+    return properly_resolved
+
+def check_dominant_doubling(voicing):
+    """
+    Checks if the third of a dominant chord is doubled.
+    We dont want this as it will result in hidden paralells. 
+    """
+    third_doubled = False
+
+    return third_doubled
+
+def example_function(parameters):
+    """
+    Checks if blabla. We do not want this because of bla bla.
+
+    Parameters:
+    -----------
+    parameters:
+    parameter explanation.
+
+    Returns:
+    --------
+    return_parameter - return_parameter explanation.
+    """
