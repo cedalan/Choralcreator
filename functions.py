@@ -214,21 +214,31 @@ def check_voice_landslide(chord_voicing1, chord_voicing2):#DONE
 
     return voice_landslide 
 
-def check_prepared_seventh(chord_voicing1, chord_voicing2):
+def check_prepared_seventh(chord_voicing1, chord_voicing2, seventh_id): #DONE
     """
-    Checks if the seventh of chord 2 (chord_voicing2) is prepared. 
+    Checks if the seventh of chord 2 (chord_voicing2) is prepared (by the same voice). 
 
     Parameters:
     -----------
-    parameters:
-    parameter explanation.
+    chord_voicing1:
+    voicing of chord predeceding the seventh chord.
+
+    chord_voicing2:
+    voicing of the seventh chord.
+
+    seventh_id:
+    numerical id of the seventh in chord_voicing2
 
     Returns:
     --------
-    return_parameter - return_parameter explanation.
+    prepared_seventh - Returns true if the seventh is prepared, false if it is not.
     """
 
-    prepared_seventh = True 
+    prepared_seventh = False
+
+    if seventh_id in chord_voicing1:
+        if chord_voicing1.index(seventh_id) == chord_voicing2.index(seventh_id):
+            prepared_seventh = True        
 
     return prepared_seventh
 
